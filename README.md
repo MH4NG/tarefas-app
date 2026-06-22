@@ -1,6 +1,16 @@
 # 📋 Gerenciador de Tarefas
 
-Aplicação educacional de listagem e adição de tarefas construída com **Next.js 15 (App Router)** e **TypeScript**, demonstrando conceitos fundamentais do ecossistema React moderno.
+Aplicação de listagem e adição de tarefas construída com **Next.js 16 (App Router)** e **TypeScript**.
+
+---
+
+## Funcionalidades
+
+- Listagem de tarefas carregadas via Server Component
+- Adição de novas tarefas por formulário controlado com validação
+- Marcar e desmarcar tarefas como concluídas clicando nelas
+- Filtrar tarefas por estado: todas, concluídas ou pendentes
+- Contadores reativos de total, concluídas e pendentes
 
 ---
 
@@ -12,7 +22,7 @@ Aplicação educacional de listagem e adição de tarefas construída com **Next
 | Client Component com formulário controlado | `components/NovaTarefa.tsx` |
 | Hook personalizado | `hooks/useContadorDeTarefas.ts` |
 | Simulação de fetch com `Promise.resolve()` | `lib/tarefas.ts` |
-| Testes unitários com Vitest + Testing Library | `__tests__/` |
+| Testes unitários com Jest e Testing Library | `tests/` |
 
 ---
 
@@ -21,21 +31,26 @@ Aplicação educacional de listagem e adição de tarefas construída com **Next
 ```
 tarefas-app/
 ├── app/
-│   ├── layout.tsx               # Layout raiz
-│   ├── page.tsx                 # Server Component (carrega dados)
-│   └── globals.css              # Estilos globais
+│   ├── layout.tsx          # Layout raiz
+│   ├── page.tsx            # Server Component (carrega dados)
+│   └── globals.css         # Estilos globais
 ├── components/
-│   ├── NovaTarefa.tsx           # Client Component — formulário controlado
-│   └── ListaDeTarefas.tsx       # Client Component — lista + contadores
+│   ├── NovaTarefa.tsx      # Client Component — formulário controlado
+│   └── ListaDeTarefas.tsx  # Client Component — lista, filtros e contadores
 ├── hooks/
 │   └── useContadorDeTarefas.ts  # Hook personalizado
 ├── lib/
-│   └── tarefas.ts               # Dados simulados (mock API)
-└── __tests__/
-    ├── tarefas.test.ts
-    ├── useContadorDeTarefas.test.ts
-    ├── NovaTarefa.test.tsx
-    └── ListaDeTarefas.test.tsx
+│   └── tarefas.ts          # Dados simulados (mock de API)
+└── tests/
+    ├── components/
+    │   ├── NovaTarefa.test.tsx
+    │   └── ListaDeTarefas.test.tsx
+    ├── hooks/
+    │   └── useContadorDeTarefas.test.ts
+    ├── lib/
+    │   └── tarefas.test.ts
+    └── pages/
+        └── page.test.tsx
 ```
 
 ---
@@ -46,35 +61,39 @@ tarefas-app/
 # Instalar dependências
 npm install
 
-# Rodar em desenvolvimento
+# Rodar em desenvolvimento (acessível na rede local)
 npm run dev
 
-# Executar testes (uma vez)
+# Executar testes
 npm test
 
-# Executar testes em modo watch
-npm run test:watch
+# Executar testes com cobertura
+npm run test:coverage
 ```
+
+Após iniciar, acesse `http://localhost:3000` no navegador.
 
 ---
 
 ## Resultado dos testes
 
 ```
-✓ __tests__/tarefas.test.ts              (4 testes)
-✓ __tests__/useContadorDeTarefas.test.ts (8 testes)
-✓ __tests__/NovaTarefa.test.tsx          (10 testes)
-✓ __tests__/ListaDeTarefas.test.tsx      (7 testes)
+tests/lib/tarefas.test.ts                   (6 testes)
+tests/hooks/useContadorDeTarefas.test.ts   (19 testes)
+tests/components/NovaTarefa.test.tsx       (20 testes)
+tests/components/ListaDeTarefas.test.tsx   (19 testes)
+tests/pages/page.test.tsx                  (14 testes)
 
-Test Files  4 passed (4)
-Tests       29 passed (29)
+Test Suites: 5 passed
+Tests:       78 passed
 ```
 
 ---
 
 ## Tecnologias
 
-- [Next.js 15](https://nextjs.org/) — App Router
+- [Next.js 16](https://nextjs.org/) — App Router
 - [TypeScript](https://www.typescriptlang.org/)
-- [Vitest](https://vitest.dev/) — test runner
+- [Jest](https://jestjs.io/) — test runner
 - [Testing Library](https://testing-library.com/) — testes de componentes
+- [Tailwind CSS](https://tailwindcss.com/) — utilitários de estilo
