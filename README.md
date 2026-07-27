@@ -1,3 +1,6 @@
+## 🚀 Aplicação publicada
+Acesse: https://tarefas-app-eight.vercel.app
+
 # 📋 Gerenciador de Tarefas
 
 Aplicação de listagem e adição de tarefas construída com **Next.js 16 (App Router)** e **TypeScript**.
